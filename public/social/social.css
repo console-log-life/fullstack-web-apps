@@ -1,0 +1,141 @@
+/* ========== Task 2: social media platform styles ========== */
+
+/* Two-column layout: feed on the left, suggestions sidebar on the right */
+.social-layout {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .social-layout { grid-template-columns: 1fr; }
+  .social-side { order: -1; } /* suggestions above the feed on narrow screens */
+}
+
+.social-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+.social-tabs a {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.social-tabs a:hover { background: var(--surface-2); text-decoration: none; }
+.social-tabs a.active { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+/* ------------------------------ Composer ----------------------------- */
+
+.composer { margin-bottom: 20px; }
+.composer textarea { min-height: 84px; }
+.composer-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.composer-count { font-size: 0.8rem; color: var(--text-muted); }
+.composer-count.over { color: var(--danger); font-weight: 600; }
+
+/* A compact "choose image" control hiding the native file input */
+.file-pick {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font-weight: 500;
+}
+.file-pick:hover { background: var(--surface-2); }
+.file-pick input[type="file"] { display: none; }
+
+.image-preview { position: relative; margin-top: 11px; }
+.image-preview img { max-height: 280px; width: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+.image-preview button {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  background: rgba(15, 23, 42, 0.78);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* -------------------------------- Post ------------------------------- */
+
+.post { margin-bottom: 16px; }
+.post-head { display: flex; gap: 11px; align-items: flex-start; }
+.post-author { font-weight: 600; font-size: 0.94rem; color: var(--text); }
+.post-author:hover { text-decoration: underline; }
+.post-time { font-size: 0.8rem; color: var(--text-muted); }
+.post-menu { margin-left: auto; display: flex; gap: 2px; }
+
+.post-content {
+  margin: 11px 0;
+  white-space: pre-wrap;  /* keep the author's line breaks */
+  word-break: break-word; /* a long URL must not widen the card */
+  font-size: 0.95rem;
+}
+
+.post-image {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  max-height: 440px;
+  width: 100%;
+  object-fit: cover;
+  margin-bottom: 11px;
+}
+
+.post-actions {
+  display: flex;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.post-actions .icon-btn { font-size: 0.88rem; padding: 5px 10px; }
+.post-actions .icon-btn.liked { color: var(--danger); font-weight: 600; }
+
+/* ------------------------------ Comments ----------------------------- */
+
+.comments { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+.comment { display: flex; gap: 9px; margin-bottom: 11px; }
+.comment-bubble {
+  background: var(--surface-2);
+  border-radius: 12px;
+  padding: 8px 12px;
+  flex: 1;
+  min-width: 0;
+}
+.comment-bubble .comment-text { font-size: 0.89rem; white-space: pre-wrap; word-break: break-word; }
+.comment-form { display: flex; gap: 8px; align-items: flex-start; margin-top: 10px; }
+.comment-form textarea { min-height: 40px; font-size: 0.89rem; }
+
+/* ------------------------------ Profile ------------------------------ */
+
+.profile-head { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 22px; }
+.profile-stats { display: flex; gap: 22px; margin: 12px 0; }
+.profile-stat { text-align: center; cursor: pointer; }
+.profile-stat strong { display: block; font-size: 1.15rem; }
+.profile-stat span { font-size: 0.8rem; color: var(--text-muted); }
+.profile-bio { max-width: 60ch; color: var(--text-muted); font-size: 0.92rem; white-space: pre-wrap; }
+
+/* ----------------------------- Suggestions --------------------------- */
+
+.social-side .card { margin-bottom: 16px; }
+.user-row { display: flex; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); }
+.user-row:last-child { border-bottom: none; }
+.user-row .grow { min-width: 0; }
+.user-row .username { font-weight: 600; font-size: 0.89rem; color: var(--text); display: block; }
+.user-row .handle { font-size: 0.78rem; color: var(--text-muted); }

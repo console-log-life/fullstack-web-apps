@@ -226,17 +226,26 @@ function formValues(form) {
   return out;
 }
 
-/** Disables a submit button while an async action runs. */
+/**
+ * Disables a button and shows a busy label while an async action runs.
+ *
+ * The original label is put back afterwards - unless the action set its own
+ * label (a Follow button becoming "Unfollow", say). That is detected by the
+ * text no longer being the busy label, so restoring never undoes a deliberate
+ * relabel.
+ */
+const BUSY_LABEL = 'Please wait…';
+
 async function withBusy(button, fn) {
   if (!button) return fn();
   const original = button.textContent;
   button.disabled = true;
-  button.textContent = 'Please wait…';
+  button.textContent = BUSY_LABEL;
   try {
     return await fn();
   } finally {
     button.disabled = false;
-    button.textContent = original;
+    if (button.textContent === BUSY_LABEL) button.textContent = original;
   }
 }
 

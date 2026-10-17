@@ -1,5 +1,10 @@
 -- =====================================================================
 -- CodeAlpha Full Stack Projects - complete database schema
+--
+-- Timestamps use strftime('%Y-%m-%d %H:%M:%f') rather than datetime(), which
+-- only resolves to whole seconds. Milliseconds keep ordering stable for rows
+-- created in the same second, and let an edit be told apart from the original
+-- write (the UI uses that to show an "edited" marker).
 -- One SQLite file holds all four modules. Tables are grouped per task
 -- and every cross-module link points back to the single `users` table,
 -- because all four apps share one authentication system.
@@ -17,7 +22,7 @@ CREATE TABLE IF NOT EXISTS users (
   username      TEXT    NOT NULL UNIQUE,
   email         TEXT    NOT NULL UNIQUE,
   password_hash TEXT    NOT NULL,          -- bcrypt hash, never the raw password
-  created_at    TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at    TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 
 -- ---------------------------------------------------------------------
@@ -32,7 +37,7 @@ CREATE TABLE IF NOT EXISTS products (
   category    TEXT    NOT NULL DEFAULT 'general',
   image_url   TEXT    NOT NULL DEFAULT '',
   stock       INTEGER NOT NULL DEFAULT 0 CHECK (stock >= 0),
-  created_at  TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at  TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 CREATE INDEX IF NOT EXISTS idx_products_category ON products(category);
 
@@ -43,7 +48,7 @@ CREATE TABLE IF NOT EXISTS cart_items (
   user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   product_id INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
   quantity   INTEGER NOT NULL CHECK (quantity > 0),
-  created_at TEXT    NOT NULL DEFAULT (datetime('now')),
+  created_at TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now')),
   UNIQUE (user_id, product_id)
 );
 
@@ -55,7 +60,7 @@ CREATE TABLE IF NOT EXISTS orders (
                   CHECK (status IN ('pending','paid','shipped','delivered','cancelled')),
   shipping_name TEXT    NOT NULL DEFAULT '',
   address       TEXT    NOT NULL DEFAULT '',
-  created_at    TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at    TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 CREATE INDEX IF NOT EXISTS idx_orders_user ON orders(user_id);
 
@@ -81,7 +86,7 @@ CREATE TABLE IF NOT EXISTS profiles (
   display_name TEXT NOT NULL DEFAULT '',
   bio          TEXT NOT NULL DEFAULT '',
   avatar_url   TEXT NOT NULL DEFAULT '',
-  updated_at   TEXT NOT NULL DEFAULT (datetime('now'))
+  updated_at   TEXT NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 
 CREATE TABLE IF NOT EXISTS posts (
@@ -89,8 +94,8 @@ CREATE TABLE IF NOT EXISTS posts (
   user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   content    TEXT    NOT NULL,
   image_url  TEXT    NOT NULL DEFAULT '',
-  created_at TEXT    NOT NULL DEFAULT (datetime('now')),
-  updated_at TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now')),
+  updated_at TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 CREATE INDEX IF NOT EXISTS idx_posts_user ON posts(user_id);
 CREATE INDEX IF NOT EXISTS idx_posts_created ON posts(created_at DESC);
@@ -100,7 +105,7 @@ CREATE TABLE IF NOT EXISTS comments (
   post_id    INTEGER NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
   user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   content    TEXT    NOT NULL,
-  created_at TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 CREATE INDEX IF NOT EXISTS idx_comments_post ON comments(post_id);
 
@@ -109,7 +114,7 @@ CREATE TABLE IF NOT EXISTS likes (
   id         INTEGER PRIMARY KEY AUTOINCREMENT,
   post_id    INTEGER NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
   user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  created_at TEXT    NOT NULL DEFAULT (datetime('now')),
+  created_at TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now')),
   UNIQUE (post_id, user_id)
 );
 
@@ -118,7 +123,7 @@ CREATE TABLE IF NOT EXISTS follows (
   id           INTEGER PRIMARY KEY AUTOINCREMENT,
   follower_id  INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   following_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  created_at   TEXT    NOT NULL DEFAULT (datetime('now')),
+  created_at   TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now')),
   UNIQUE (follower_id, following_id),
   CHECK (follower_id <> following_id)
 );
@@ -132,7 +137,7 @@ CREATE TABLE IF NOT EXISTS projects (
   name        TEXT    NOT NULL,
   description TEXT    NOT NULL DEFAULT '',
   owner_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  created_at  TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at  TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 
 CREATE TABLE IF NOT EXISTS project_members (
@@ -140,7 +145,7 @@ CREATE TABLE IF NOT EXISTS project_members (
   project_id INTEGER NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
   user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   role       TEXT    NOT NULL DEFAULT 'member' CHECK (role IN ('owner','member')),
-  created_at TEXT    NOT NULL DEFAULT (datetime('now')),
+  created_at TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now')),
   UNIQUE (project_id, user_id)
 );
 
@@ -155,7 +160,7 @@ CREATE TABLE IF NOT EXISTS tasks (
   due_date    TEXT,
   position    INTEGER NOT NULL DEFAULT 0,
   created_by  INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  created_at  TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at  TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 CREATE INDEX IF NOT EXISTS idx_tasks_project ON tasks(project_id, status, position);
 
@@ -164,7 +169,7 @@ CREATE TABLE IF NOT EXISTS task_comments (
   task_id    INTEGER NOT NULL REFERENCES tasks(id) ON DELETE CASCADE,
   user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   content    TEXT    NOT NULL,
-  created_at TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 CREATE INDEX IF NOT EXISTS idx_task_comments_task ON task_comments(task_id);
 
@@ -177,7 +182,7 @@ CREATE TABLE IF NOT EXISTS notifications (
   type       TEXT    NOT NULL,   -- task_assigned | comment_added | card_moved | project_invite
   message    TEXT    NOT NULL,
   is_read    INTEGER NOT NULL DEFAULT 0,
-  created_at TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 CREATE INDEX IF NOT EXISTS idx_notifications_user ON notifications(user_id, is_read);
 
@@ -190,7 +195,7 @@ CREATE TABLE IF NOT EXISTS rooms (
   code       TEXT    NOT NULL UNIQUE,   -- short code people type in to join
   name       TEXT    NOT NULL,
   owner_id   INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  created_at TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 
 -- Shared files. Only ciphertext is stored, so the IVs needed to decrypt are kept
@@ -204,7 +209,7 @@ CREATE TABLE IF NOT EXISTS room_files (
   size_bytes    INTEGER NOT NULL DEFAULT 0,
   iv            TEXT    NOT NULL DEFAULT '',  -- base64 AES-GCM IV for the bytes
   name_iv       TEXT    NOT NULL DEFAULT '',  -- base64 AES-GCM IV for the name
-  created_at    TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at    TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 CREATE INDEX IF NOT EXISTS idx_room_files_room ON room_files(room_id);
 
@@ -215,6 +220,6 @@ CREATE TABLE IF NOT EXISTS room_messages (
   user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   ciphertext TEXT    NOT NULL,
   iv         TEXT    NOT NULL,
-  created_at TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%d %H:%M:%f','now'))
 );
 CREATE INDEX IF NOT EXISTS idx_room_messages_room ON room_messages(room_id, id);
