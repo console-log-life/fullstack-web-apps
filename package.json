@@ -1,0 +1,27 @@
+{
+  "name": "codealpha-fullstack-projects",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CodeAlpha Full Stack Development internship submission: e-commerce store, social media platform, project management tool, and real-time communication app in one Node/Express/SQLite app.",
+  "main": "server/app.js",
+  "scripts": {
+    "dev": "node server/app.js",
+    "start": "node server/app.js",
+    "seed": "node server/db/seed.js"
+  },
+  "keywords": ["codealpha", "express", "sqlite", "socket.io", "webrtc"],
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "better-sqlite3": "^12.4.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "socket.io": "^4.8.1"
+  }
+}

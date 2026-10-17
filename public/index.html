@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CodeAlpha Full Stack Projects</title>
+  <meta name="description" content="Four full stack apps sharing one Node/Express/SQLite backend and one login." />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#x1F680;</text></svg>" />
+  <style>
+    /* Landing-page-only styles */
+    .hero {
+      background: linear-gradient(135deg, #3b5bdb, #5c7cfa 55%, #4dabf7);
+      color: #fff;
+      padding: 52px 0 56px;
+    }
+    .hero h1 { font-size: clamp(1.7rem, 4.4vw, 2.5rem); margin-bottom: 10px; }
+    .hero p { font-size: 1.03rem; opacity: 0.94; max-width: 62ch; margin: 0 0 18px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hero-meta span {
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .task-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+      margin-top: 22px;
+    }
+    .task-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.14s ease, box-shadow 0.14s ease;
+    }
+    .task-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .task-icon { font-size: 1.9rem; line-height: 1; margin-bottom: 10px; }
+    .task-card h2 { font-size: 1.12rem; margin-bottom: 4px; }
+    .task-card ul {
+      margin: 12px 0 18px;
+      padding-left: 18px;
+      font-size: 0.87rem;
+      color: var(--text-muted);
+    }
+    .task-card ul li { margin-bottom: 4px; }
+    .task-card .btn { margin-top: auto; }
+
+    .section { margin-top: 42px; }
+    .stack-list { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+    .stack-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 13px 15px; }
+    .stack-item strong { display: block; font-size: 0.9rem; }
+    .stack-item span { font-size: 0.82rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Four full stack apps, one backend</h1>
+      <p>
+        My CodeAlpha Full Stack Development internship submission: an e-commerce store,
+        a social network, a Trello-style project board and a WebRTC meeting room &mdash; all
+        sharing a single Express server, one SQLite database and one login.
+      </p>
+      <div class="hero-meta">
+        <span>Node.js + Express</span>
+        <span>SQLite</span>
+        <span>JWT in httpOnly cookie</span>
+        <span>Socket.io</span>
+        <span>WebRTC</span>
+        <span>Web Crypto AES-GCM</span>
+      </div>
+    </div>
+  </section>
+
+  <main id="app" class="container page">
+    <div class="page-head">
+      <div>
+        <h1>The four tasks</h1>
+        <p class="muted" style="margin:0">Pick any app &mdash; your session carries across all of them.</p>
+      </div>
+      <div id="landing-session"></div>
+    </div>
+
+    <div class="task-grid">
+      <article class="task-card">
+        <div class="task-icon">&#x1F6CD;&#xFE0F;</div>
+        <h2>Task 1 &middot; E-commerce Store</h2>
+        <p class="muted small" style="margin:0">Browse, cart, checkout, order history.</p>
+        <ul>
+          <li>Product grid with search + category filter</li>
+          <li>Product details page</li>
+          <li>Cart persisted per user in the database</li>
+          <li>Checkout that creates orders and reduces stock</li>
+        </ul>
+        <a class="btn" href="/shop/">Open the store</a>
+      </article>
+
+      <article class="task-card">
+        <div class="task-icon">&#x1F4AC;</div>
+        <h2>Task 2 &middot; Social Media Platform</h2>
+        <p class="muted small" style="margin:0">Profiles, posts, follows, likes, comments.</p>
+        <ul>
+          <li>Profiles with bio and avatar upload</li>
+          <li>Create, edit and delete posts with images</li>
+          <li>Likes, comments, follow / unfollow</li>
+          <li>Home feed from people you follow + explore</li>
+        </ul>
+        <a class="btn" href="/social/">Open the feed</a>
+      </article>
+
+      <article class="task-card">
+        <div class="task-icon">&#x1F4CB;</div>
+        <h2>Task 3 &middot; Project Management</h2>
+        <p class="muted small" style="margin:0">Kanban boards that update live.</p>
+        <ul>
+          <li>Group projects with members by username</li>
+          <li>Drag-and-drop cards across three columns</li>
+          <li>Assignees, due dates, task comments</li>
+          <li>Real-time board sync + notification bell</li>
+        </ul>
+        <a class="btn" href="/projects/">Open the boards</a>
+      </article>
+
+      <article class="task-card">
+        <div class="task-icon">&#x1F4F9;</div>
+        <h2>Task 4 &middot; Real-Time Communication</h2>
+        <p class="muted small" style="margin:0">Video calls, screen share, whiteboard.</p>
+        <ul>
+          <li>Multi-user WebRTC video and audio</li>
+          <li>Screen sharing and encrypted file sharing</li>
+          <li>End-to-end encrypted chat (AES-GCM)</li>
+          <li>Shared whiteboard synced over Socket.io</li>
+        </ul>
+        <a class="btn" href="/meet/">Open a meeting</a>
+      </article>
+    </div>
+
+    <section class="section">
+      <h2>How it is built</h2>
+      <div class="stack-list">
+        <div class="stack-item">
+          <strong>One Express server</strong>
+          <span>Routes mounted per module under /api</span>
+        </div>
+        <div class="stack-item">
+          <strong>One SQLite file</strong>
+          <span>better-sqlite3, parameterized queries only</span>
+        </div>
+        <div class="stack-item">
+          <strong>One auth system</strong>
+          <span>bcrypt + JWT in an httpOnly cookie</span>
+        </div>
+        <div class="stack-item">
+          <strong>Socket.io namespaces</strong>
+          <span>/projects for boards, /meet for calls</span>
+        </div>
+        <div class="stack-item">
+          <strong>WebRTC mesh</strong>
+          <span>Google STUN, Socket.io signalling</span>
+        </div>
+        <div class="stack-item">
+          <strong>Web Crypto</strong>
+          <span>PBKDF2 key, AES-GCM chat and files</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/shared/api.js"></script>
+  <script src="/shared/ui.js"></script>
+  <script src="/shared/auth.js"></script>
+  <script src="/shared/notifications.js"></script>
+  <script>
+    // The landing page is public: it shows the login card inline only when the
+    // visitor arrived from a protected page (?next=...).
+    (async () => {
+      await Shell.init({ module: 'home' });
+      Notifications.mount();
+
+      const slot = document.getElementById('landing-session');
+      const user = Shell.user();
+      const next = new URLSearchParams(location.search).get('next');
+
+      if (user) {
+        slot.append(
+          el('span', { class: 'badge badge-success', text: `Signed in as ${user.username}` })
+        );
+        // Arrived here only to log in? Send them back where they came from.
+        if (next && next.startsWith('/')) location.replace(next);
+        return;
+      }
+
+      // Not signed in: offer the shared login card under the task list.
+      const card = Shell.authCard(() => {
+        location.href = next && next.startsWith('/') ? next : '/';
+      });
+      document.getElementById('app').append(
+        el('div', { style: 'max-width:420px;margin:34px auto 0' }, card)
+      );
+    })();
+  </script>
+</body>
+</html>
