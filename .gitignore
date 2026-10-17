@@ -1,20 +1,26 @@
-# Dependencies
+# Each task folder is a standalone app, so these patterns use **/ to match
+# inside every task folder as well as at the repository root.
+
+# Dependencies (each task folder installs its own)
 node_modules/
+**/node_modules/
 
 # Environment secrets
 .env
 .env.local
+**/.env
+**/.env.local
 
-# SQLite database files
+# SQLite database files (rebuilt by `npm run seed`)
 *.db
 *.db-journal
 *.db-wal
 *.db-shm
-server/db/data/
+**/server/db/data/
 
-# User uploaded files (avatars, post images, room files)
-public/uploads/*
-!public/uploads/.gitkeep
+# User uploaded files (avatars, post images, encrypted room files)
+**/public/uploads/*
+!**/public/uploads/.gitkeep
 
 # Logs
 npm-debug.log*

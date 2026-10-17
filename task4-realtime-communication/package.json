@@ -1,0 +1,32 @@
+{
+  "name": "codealpha-task4-realtime-communication",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CodeAlpha Task 4: Real-Time Communication App. WebRTC video calls, screen share, end-to-end encrypted chat and files, shared whiteboard.",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "dev": "node server/app.js",
+    "seed": "node server/db/seed.js"
+  },
+  "keywords": [
+    "codealpha",
+    "express",
+    "sqlite",
+    "meet"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "better-sqlite3": "^12.4.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "socket.io": "^4.8.1"
+  }
+}

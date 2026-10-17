@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CodeAlpha Task 1 &middot; Simple E-commerce Store</title>
+  <meta name="description" content="Product catalogue, cart persisted per user, checkout and order history." />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#x1F6CD;</text></svg>" />
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #3b5bdb, #5c7cfa 55%, #4dabf7);
+      color: #fff;
+      padding: 48px 0 52px;
+    }
+    .hero .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      opacity: 0.9;
+    }
+    .hero h1 { font-size: clamp(1.6rem, 4.2vw, 2.3rem); margin: 6px 0 10px; }
+    .hero p { font-size: 1.02rem; opacity: 0.94; max-width: 62ch; margin: 0 0 18px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hero-meta span {
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .feature-list { padding-left: 20px; margin: 12px 0 20px; color: var(--text-muted); font-size: 0.92rem; }
+    .feature-list li { margin-bottom: 6px; }
+  </style>
+</head>
+<body data-module="home" data-render="renderHome">
+  <header id="navbar"></header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">CodeAlpha &middot; Task 1</p>
+      <h1>Simple E-commerce Store</h1>
+      <p>Product catalogue, cart persisted per user, checkout and order history.</p>
+      <div class="hero-meta">
+        <span>Node.js + Express</span>
+        <span>SQLite</span>
+        <span>JWT in httpOnly cookie</span>
+        <span>bcrypt</span>
+      </div>
+    </div>
+  </section>
+
+  <main id="app" class="container page">
+    <div class="page-head">
+      <div>
+        <h1>What this task does</h1>
+        <p class="muted" style="margin:0">Log in with a demo account and open the app.</p>
+      </div>
+      <div id="landing-session"></div>
+    </div>
+
+    <div class="card" style="max-width:720px">
+      <ul class="feature-list">
+        <li>Product grid with text search, category filter and four sort orders</li>
+        <li>Product details page with stock status and a quantity picker</li>
+        <li>Cart stored in the database per user, so it follows you between browsers</li>
+        <li>Checkout that creates the order, reduces stock and clears the cart in one transaction</li>
+        <li>Order history with statuses, and cancel-with-restock</li>
+      </ul>
+      <a class="btn" href="/shop/">Open the app</a>
+    </div>
+  </main>
+
+  <script src="/shared/api.js"></script>
+  <script src="/shared/ui.js"></script>
+  <script src="/shared/auth.js"></script>
+  <script src="/shared/home.js"></script>
+  <script src="/shared/boot.js"></script>
+</body>
+</html>
