@@ -25,6 +25,18 @@ const { migrate, DB_PATH } = require('./db');
 const { attachUser } = require('./middleware/auth');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
+// Fail at boot rather than at the first login attempt: a missing secret is a
+// setup mistake, and signing tokens with a guessable fallback would be worse
+// than refusing to start.
+if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 16) {
+  console.error(
+    '\n  JWT_SECRET is missing or too short.\n' +
+    '  Copy .env.example to .env and set it to a long random string, e.g.\n' +
+    '    node -e "console.log(require(\'crypto\').randomBytes(48).toString(\'hex\'))"\n'
+  );
+  process.exit(1);
+}
+
 // Create/upgrade tables before anything can query them.
 const migration = migrate();
 
@@ -86,8 +98,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/shop', require('./routes/shop'));
 app.use('/api/social', require('./routes/social'));
 app.use('/api/projects', require('./routes/projects'));
-// Added in Phase 5.
-// app.use('/api/meet', require('./routes/meet'));
+app.use('/api/meet', require('./routes/meet'));
 
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true, db: path.basename(DB_PATH), schema: migration.version });
@@ -112,8 +123,7 @@ const io = new Server(server, {
 });
 
 require('./sockets/projects')(io);
-// Registered in Phase 5.
-// require('./sockets/meet')(io);
+require('./sockets/meet')(io);
 
 const PORT = Number(process.env.PORT) || 3000;
 server.listen(PORT, () => {

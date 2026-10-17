@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meeting room - CodeAlpha</title>
+  <meta name="description" content="Video call with screen share, encrypted chat and files, and a shared whiteboard." />
+  <link rel="stylesheet" href="/shared/styles.css" />
+  <link rel="stylesheet" href="/meet/meet.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#x1F4F9;</text></svg>" />
+</head>
+<body data-module="meet" data-require-auth="true" data-render="Meet.renderRoom">
+  <header id="navbar"></header>
+  <main id="app" class="container page"></main>
+
+  <script src="/shared/api.js"></script>
+  <script src="/shared/ui.js"></script>
+  <script src="/shared/auth.js"></script>
+  <script src="/shared/notifications.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/meet/crypto.js"></script>
+  <script src="/meet/meet.js"></script>
+  <script src="/shared/boot.js"></script>
+</body>
+</html>
