@@ -85,8 +85,8 @@ app.use(attachUser);
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/shop', require('./routes/shop'));
 app.use('/api/social', require('./routes/social'));
-// Added in Phase 4-5 as each task is built.
-// app.use('/api/projects', require('./routes/projects'));
+app.use('/api/projects', require('./routes/projects'));
+// Added in Phase 5.
 // app.use('/api/meet', require('./routes/meet'));
 
 app.get('/api/health', (_req, res) => {
@@ -111,8 +111,8 @@ const io = new Server(server, {
   cors: { origin: allowedOrigins, credentials: true },
 });
 
-// Namespaces are registered in Phase 4 and Phase 5.
-// require('./sockets/projects')(io);
+require('./sockets/projects')(io);
+// Registered in Phase 5.
 // require('./sockets/meet')(io);
 
 const PORT = Number(process.env.PORT) || 3000;

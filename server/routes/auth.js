@@ -19,11 +19,13 @@ const {
 
 const router = express.Router();
 
-// Rate limit the credential endpoints so passwords cannot be brute-forced:
-// 20 attempts per IP per 15 minutes.
+// Rate limit the credential endpoints so passwords cannot be brute-forced.
+// Defaults to 20 attempts per IP per 15 minutes; both numbers are
+// configurable so a test run or a shared-IP deployment can tune them without
+// editing code.
 const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 20,
+  windowMs: (Number(process.env.AUTH_RATE_LIMIT_WINDOW_MIN) || 15) * 60 * 1000,
+  max: Number(process.env.AUTH_RATE_LIMIT_MAX) || 20,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Too many attempts. Please wait a few minutes and try again.' },
