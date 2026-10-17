@@ -83,8 +83,8 @@ app.use(attachUser);
 
 // --- API routes -------------------------------------------------------
 app.use('/api/auth', require('./routes/auth'));
-// Added in Phase 2-5 as each task is built.
-// app.use('/api/shop', require('./routes/shop'));
+app.use('/api/shop', require('./routes/shop'));
+// Added in Phase 3-5 as each task is built.
 // app.use('/api/social', require('./routes/social'));
 // app.use('/api/projects', require('./routes/projects'));
 // app.use('/api/meet', require('./routes/meet'));
