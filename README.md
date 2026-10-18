@@ -18,10 +18,10 @@ bcrypt + JWT in an httpOnly cookie  ·  Socket.io  ·  WebRTC  ·  Web Crypto (A
 
 | # | Task | Folder | Port | What it does |
 | --- | --- | --- | --- | --- |
-| 1 | Simple E-commerce Store | [task1-ecommerce-store](https://github.com/Apeksha-22/codealpha_tasks/tree/main/task1-ecommerce-store) | 3001 | Product catalogue with search and filters, cart persisted per user, checkout, order history |
-| 2 | Social Media Platform | [task2-social-media](https://github.com/Apeksha-22/codealpha_tasks/tree/main/task2-social-media) | 3002 | Profiles with avatar upload, posts with images, comments, likes, follow graph, home feed |
-| 3 | Project Management Tool | [task3-project-management](https://github.com/Apeksha-22/codealpha_tasks/tree/main/task3-project-management) | 3003 | Group projects, Kanban board with drag and drop, task comments, live sync and notifications |
-| 4 | Real-Time Communication App | [task4-realtime-communication](https://github.com/Apeksha-22/codealpha_tasks/tree/main/task4-realtime-communication) | 3004 | WebRTC video calls, screen share, end-to-end encrypted chat and files, shared whiteboard |
+| 1 | Simple E-commerce Store | [task1-ecommerce-store](https://github.com/console-log-life/codealpha_tasks/tree/main/task1-ecommerce-store) | 3001 | Product catalogue with search and filters, cart persisted per user, checkout, order history |
+| 2 | Social Media Platform | [task2-social-media](https://github.com/console-log-life/codealpha_tasks/tree/main/task2-social-media) | 3002 | Profiles with avatar upload, posts with images, comments, likes, follow graph, home feed |
+| 3 | Project Management Tool | [task3-project-management](https://github.com/console-log-life/codealpha_tasks/tree/main/task3-project-management) | 3003 | Group projects, Kanban board with drag and drop, task comments, live sync and notifications |
+| 4 | Real-Time Communication App | [task4-realtime-communication](https://github.com/console-log-life/codealpha_tasks/tree/main/task4-realtime-communication) | 3004 | WebRTC video calls, screen share, end-to-end encrypted chat and files, shared whiteboard |
 
 Each folder has its own README with the full feature checklist, a demo script
 and its known limitations.
@@ -34,7 +34,7 @@ You need **Node.js 18 or newer**. Nothing else — SQLite is a single file, so
 there is no database server to install.
 
 ```bash
-git clone https://github.com/Apeksha-22/codealpha_tasks.git
+git clone https://github.com/console-log-life/codealpha_tasks.git
 cd codealpha_tasks/task1-ecommerce-store     # or any other task folder
 
 npm install
