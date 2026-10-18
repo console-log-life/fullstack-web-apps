@@ -1,6 +1,6 @@
-# Task 3 — Project Management Tool
+# Project 3 — Project Management Tool
 
-**CodeAlpha Full Stack Development internship · Task 3**
+One of four apps in [fullstack-web-apps](https://github.com/console-log-life/fullstack-web-apps).
 
 A Trello-style project board: create a group project, add teammates by username,
 and move task cards across three columns by dragging them. The board updates
@@ -28,7 +28,6 @@ and authentication, so it runs on its own.
 - [Database schema](#database-schema)
 - [API reference](#api-reference)
 - [How to demo](#how-to-demo)
-- [Screenshots](#screenshots)
 - [Known limitations](#known-limitations)
 
 ---
@@ -82,7 +81,7 @@ different users — use a private/incognito window for the second.
 
 ## Features
 
-Mapped to the CodeAlpha Task 3 requirements:
+What it does:
 
 | Required | Status | Where |
 | --- | --- | --- |
@@ -382,37 +381,6 @@ Run `npm run seed && npm start` and open **two windows side by side**:
 
 ---
 
-## Screenshots
-
-> Replace these placeholders with your own captures before submitting.
-> Suggested: 1280×800 PNG in a `screenshots/` folder.
-
-### Project list
-<!-- ![Project list](screenshots/01-projects.png) -->
-_`screenshots/01-projects.png` — projects with member counts and progress bars._
-
-### Kanban board
-<!-- ![Kanban board](screenshots/02-board.png) -->
-_`screenshots/02-board.png` — the three columns with cards, members and the live pill._
-
-### Drag and drop
-<!-- ![Dragging a card](screenshots/03-drag.png) -->
-_`screenshots/03-drag.png` — a card mid-drag with the drop marker visible._
-
-### Task detail
-<!-- ![Task detail](screenshots/04-task.png) -->
-_`screenshots/04-task.png` — assignee, due date, description and comments._
-
-### Real-time sync
-<!-- ![Two windows in sync](screenshots/05-realtime.png) -->
-_`screenshots/05-realtime.png` — two windows side by side, one showing the live banner._
-
-### Notifications
-<!-- ![Notification bell](screenshots/06-notifications.png) -->
-_`screenshots/06-notifications.png` — the bell panel open with unread items._
-
----
-
 ## Known limitations
 
 - **Three fixed columns.** To Do / In Progress / Done are a `CHECK` constraint,
@@ -426,8 +394,7 @@ _`screenshots/06-notifications.png` — the bell panel open with unread items._
   shows an order the server disagrees with.
 - **No activity log or audit history.** Notifications are the only record that
   something happened, and they are per-recipient.
-- **No file attachments, labels, checklists or subtasks** — outside the Task 3
-  brief.
+- **No file attachments, labels, checklists or subtasks** — out of scope here.
 - **Socket.io state is in memory.** With more than one server process, two
   people on different instances would not see each other's updates; that needs
   the Redis adapter.

@@ -1,6 +1,6 @@
-# Task 2 — Social Media Platform
+# Project 2 — Social Media Platform
 
-**CodeAlpha Full Stack Development internship · Task 2**
+One of four apps in [fullstack-web-apps](https://github.com/console-log-life/fullstack-web-apps).
 
 A small social network: profiles with avatars, posts with images, comments,
 likes, and a follow graph that drives a personalised home feed. Built with
@@ -22,7 +22,6 @@ and authentication, so it runs on its own.
 - [Database schema](#database-schema)
 - [API reference](#api-reference)
 - [How to demo](#how-to-demo)
-- [Screenshots](#screenshots)
 - [Known limitations](#known-limitations)
 
 ---
@@ -76,7 +75,7 @@ a new account from the landing page.
 
 ## Features
 
-Mapped to the CodeAlpha Task 2 requirements:
+What it does:
 
 | Required | Status | Where |
 | --- | --- | --- |
@@ -211,7 +210,7 @@ Decisions worth pointing out:
   **`CHECK (follower_id <> following_id)`** so a self-follow is impossible at
   the schema level.
 - **`profiles` is separate from `users`** so the account table stays the same
-  shape across all four CodeAlpha tasks.
+  shape across all four apps.
 - **Timestamps keep milliseconds** (`strftime('%Y-%m-%d %H:%M:%f')`). Plain
   `datetime('now')` only resolves to whole seconds, which made a post edited in
   the same second it was created look unedited.
@@ -282,37 +281,10 @@ Run `npm run seed && npm start`, open <http://localhost:3002>, log in as
 
 ---
 
-## Screenshots
-
-> Replace these placeholders with your own captures before submitting.
-> Suggested: 1280×800 PNG in a `screenshots/` folder.
-
-### Landing page
-<!-- ![Landing page](screenshots/01-landing.png) -->
-_`screenshots/01-landing.png` — the task intro page and navbar._
-
-### Home feed
-<!-- ![Home feed](screenshots/02-feed.png) -->
-_`screenshots/02-feed.png` — composer, a post with an image, the suggestions sidebar._
-
-### Comments
-<!-- ![Comments](screenshots/03-comments.png) -->
-_`screenshots/03-comments.png` — a post with its comment thread open._
-
-### Profile
-<!-- ![Profile](screenshots/04-profile.png) -->
-_`screenshots/04-profile.png` — avatar, bio, counts and that user's posts._
-
-### Explore
-<!-- ![Explore](screenshots/05-explore.png) -->
-_`screenshots/05-explore.png` — every post with the search box in use._
-
----
-
 ## Known limitations
 
 - **No notifications.** Likes, comments and follows do not alert the other
-  person. Notifications are built in Task 3, where they are part of the brief;
+  person. Notifications are built in Task 3, where they belong;
   adding them here would mean a Socket.io dependency this task does not
   otherwise need.
 - **No real-time feed.** New posts from other people appear on reload, not
@@ -323,8 +295,7 @@ _`screenshots/05-explore.png` — every post with the search box in use._
 - **Images are stored on local disk** under `public/uploads/`, with no resizing
   or thumbnail generation, so a large upload is served at full size. A real
   deployment would use object storage and a CDN.
-- **No direct messages, hashtags, reposts or blocking** — outside the Task 2
-  brief.
+- **No direct messages, hashtags, reposts or blocking** — out of scope here.
 - **SQLite suits one server process.** That is the right call for a project you
   can clone and run in two commands; a multi-instance deployment would want
   Postgres.

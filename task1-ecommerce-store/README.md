@@ -1,6 +1,6 @@
-# Task 1 — Simple E-commerce Store
+# Project 1 — Simple E-commerce Store
 
-**CodeAlpha Full Stack Development internship · Task 1**
+One of four apps in [fullstack-web-apps](https://github.com/console-log-life/fullstack-web-apps).
 
 A working storefront: browse a catalogue, add things to a cart that survives
 logging out, check out, and look back at your orders. Built with Node.js,
@@ -21,7 +21,6 @@ and authentication, so it runs on its own.
 - [Database schema](#database-schema)
 - [API reference](#api-reference)
 - [How to demo](#how-to-demo)
-- [Screenshots](#screenshots)
 - [Known limitations](#known-limitations)
 
 ---
@@ -78,7 +77,7 @@ a new account from the landing page.
 
 ## Features
 
-Mapped to the CodeAlpha Task 1 requirements:
+What it does:
 
 | Required | Status | Where |
 | --- | --- | --- |
@@ -269,33 +268,6 @@ Run `npm run seed && npm start`, open <http://localhost:3001>, log in as
    **Cancel** it and reload the product page again — the stock comes back.
 7. **Login gate.** Open `/shop/cart.html` in a private window. Instead of an
    error you get the login card, and the cart is not shown.
-
----
-
-## Screenshots
-
-> Replace these placeholders with your own captures before submitting.
-> Suggested: 1280×800 PNG in a `screenshots/` folder.
-
-### Landing page
-<!-- ![Landing page](screenshots/01-landing.png) -->
-_`screenshots/01-landing.png` — the task intro page and navbar._
-
-### Product listing with search and filter
-<!-- ![Product listing](screenshots/02-listing.png) -->
-_`screenshots/02-listing.png` — the grid with a category selected._
-
-### Product details
-<!-- ![Product details](screenshots/03-details.png) -->
-_`screenshots/03-details.png` — stock badge and quantity picker._
-
-### Cart and checkout
-<!-- ![Cart](screenshots/04-cart.png) -->
-_`screenshots/04-cart.png` — cart lines, summary, checkout modal open._
-
-### Order history
-<!-- ![Orders](screenshots/05-orders.png) -->
-_`screenshots/05-orders.png` — an order expanded, showing its status._
 
 ---
 

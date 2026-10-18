@@ -1,41 +1,51 @@
-# CodeAlpha Tasks
+# Full Stack Web Apps
 
-All four tasks from the **CodeAlpha Full Stack Development** internship.
+Four full stack web applications, each one self-contained in its own folder:
+an e-commerce store, a social platform, a real-time Kanban board, and a video
+calling app with end-to-end encrypted chat.
 
-Each task is a **self-contained application in its own folder** — its own
-`package.json`, its own Express server, its own SQLite database and its own
-copy of the shared authentication layer. You can clone this repository, step
-into any one folder, and run that task on its own without touching the others.
+I built these to work through the parts of web development that are easy to
+read about and harder to actually get right — a checkout that cannot oversell
+stock, drag and drop without a library, WebRTC signalling, and encryption where
+the server genuinely cannot read the messages. The four project ideas came from
+the CodeAlpha full stack task list; the implementation, structure and
+documentation are my own.
+
+Each folder has its own `package.json`, Express server, SQLite database and
+copy of the shared authentication layer, so you can clone the repository, step
+into any one folder, and run that app on its own.
 
 ```
 Node.js + Express  ·  SQLite (better-sqlite3)  ·  vanilla HTML/CSS/JS
 bcrypt + JWT in an httpOnly cookie  ·  Socket.io  ·  WebRTC  ·  Web Crypto (AES-GCM)
 ```
 
+No frontend framework and no build step — the entire client is readable as-is.
+
 ---
 
-## The four tasks
+## The four apps
 
-| # | Task | Folder | Port | What it does |
+| # | Project | Folder | Port | What it does |
 | --- | --- | --- | --- | --- |
-| 1 | Simple E-commerce Store | [task1-ecommerce-store](https://github.com/console-log-life/codealpha_tasks/tree/main/task1-ecommerce-store) | 3001 | Product catalogue with search and filters, cart persisted per user, checkout, order history |
-| 2 | Social Media Platform | [task2-social-media](https://github.com/console-log-life/codealpha_tasks/tree/main/task2-social-media) | 3002 | Profiles with avatar upload, posts with images, comments, likes, follow graph, home feed |
-| 3 | Project Management Tool | [task3-project-management](https://github.com/console-log-life/codealpha_tasks/tree/main/task3-project-management) | 3003 | Group projects, Kanban board with drag and drop, task comments, live sync and notifications |
-| 4 | Real-Time Communication App | [task4-realtime-communication](https://github.com/console-log-life/codealpha_tasks/tree/main/task4-realtime-communication) | 3004 | WebRTC video calls, screen share, end-to-end encrypted chat and files, shared whiteboard |
+| 1 | E-commerce Store | [task1-ecommerce-store](https://github.com/console-log-life/fullstack-web-apps/tree/main/task1-ecommerce-store) | 3001 | Product catalogue with search and filters, cart persisted per user, checkout, order history |
+| 2 | Social Platform | [task2-social-media](https://github.com/console-log-life/fullstack-web-apps/tree/main/task2-social-media) | 3002 | Profiles with avatar upload, posts with images, comments, likes, follow graph, home feed |
+| 3 | Project Management Tool | [task3-project-management](https://github.com/console-log-life/fullstack-web-apps/tree/main/task3-project-management) | 3003 | Group projects, Kanban board with drag and drop, task comments, live sync and notifications |
+| 4 | Real-Time Communication App | [task4-realtime-communication](https://github.com/console-log-life/fullstack-web-apps/tree/main/task4-realtime-communication) | 3004 | WebRTC video calls, screen share, end-to-end encrypted chat and files, shared whiteboard |
 
-Each folder has its own README with the full feature checklist, a demo script
-and its known limitations.
+Each folder has its own README with the full feature list, the design decisions
+behind its database schema, a demo walkthrough and its known limitations.
 
 ---
 
-## Running any task
+## Running any app
 
 You need **Node.js 18 or newer**. Nothing else — SQLite is a single file, so
 there is no database server to install.
 
 ```bash
-git clone https://github.com/console-log-life/codealpha_tasks.git
-cd codealpha_tasks/task1-ecommerce-store     # or any other task folder
+git clone https://github.com/console-log-life/fullstack-web-apps.git
+cd fullstack-web-apps/task1-ecommerce-store     # or any other folder
 
 npm install
 cp .env.example .env        # Windows: copy .env.example .env
@@ -45,7 +55,7 @@ npm run seed                # loads the demo data
 npm start
 ```
 
-Then open the port that task prints, for example <http://localhost:3001>.
+Then open the port that app prints, for example <http://localhost:3001>.
 
 > **Set `JWT_SECRET` before starting.** Each server refuses to boot without one
 > rather than signing session tokens with a guessable fallback. Generate one
@@ -54,14 +64,14 @@ Then open the port that task prints, for example <http://localhost:3001>.
 > node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
 > ```
 
-Because every task uses a different default port, all four can run at the same
+Because every app uses a different default port, all four can run at the same
 time in four terminals.
 
 ---
 
 ## Demo login credentials
 
-Every task seeds the **same four accounts**, all with the password
+Every app seeds the **same four accounts**, all with the password
 **`password123`**:
 
 | Username | Password |
@@ -71,22 +81,20 @@ Every task seeds the **same four accounts**, all with the password
 | `bob` | `password123` |
 | `carol` | `password123` |
 
-`demo` is the account that owns the seeded data in each task. You can log in
-with the username or the email (`demo@example.com`), or register a new account
-from any page.
+`demo` owns the seeded data in each app. You can log in with the username or
+the email (`demo@example.com`), or register a new account from any page.
 
-For Task 4 the seeded meeting room is code **`DEMO01`**, passphrase
+For project 4 the seeded meeting room is code **`DEMO01`**, passphrase
 **`codealpha`**.
 
 ---
 
 ## Why each folder repeats the shared code
 
-The CodeAlpha submission form asks for a separate link per task, so every task
-has to stand on its own. That means each folder carries its own copy of the
-foundation all four share:
+Each app is meant to stand on its own, so every folder carries its own copy of
+the foundation all four share:
 
-| Duplicated in every task | Why it is there |
+| Duplicated in every folder | Why it is there |
 | --- | --- |
 | `server/routes/auth.js` | register / login / logout / me |
 | `server/middleware/auth.js` | signs and verifies the JWT, the `authRequired` guard |
@@ -97,9 +105,13 @@ foundation all four share:
 | `public/shared/*` | design tokens, fetch wrapper, UI helpers, navbar, page bootstrapper |
 
 The duplication is deliberate rather than an accident of copy-pasting: it is
-what lets each folder be cloned and run by itself. Each task's `schema.sql`
-holds the shared `users` table plus only that task's own tables, and each
-task's navbar links only to its own pages.
+what lets each folder be cloned and run by itself. Each app's `schema.sql`
+holds the shared `users` table plus only that app's own tables, and each
+navbar links only to its own pages.
+
+The honest trade-off: a fix to the shared auth layer has to be applied four
+times. A monorepo with a shared package would avoid that, at the cost of no
+folder being independently runnable.
 
 ---
 
@@ -121,35 +133,52 @@ task's navbar links only to its own pages.
 ## Repository layout
 
 ```
-codealpha_tasks/
+fullstack-web-apps/
 ├── README.md                        this file
 ├── .gitignore
-├── task1-ecommerce-store/           Task 1 - port 3001
-├── task2-social-media/              Task 2 - port 3002
-├── task3-project-management/        Task 3 - port 3003
-└── task4-realtime-communication/    Task 4 - port 3004
+├── task1-ecommerce-store/           Project 1 - port 3001
+├── task2-social-media/              Project 2 - port 3002
+├── task3-project-management/        Project 3 - port 3003
+└── task4-realtime-communication/    Project 4 - port 3004
 ```
 
-Every task folder follows the same shape:
+Every folder follows the same shape:
 
 ```
 taskN-.../
-├── README.md            this task's documentation
-├── package.json         only the dependencies this task needs
+├── README.md            this app's documentation
+├── package.json         only the dependencies this app needs
 ├── .env.example
 ├── server/
 │   ├── app.js           Express app, CSP, static files
 │   ├── db/              index.js, schema.sql, seed.js
 │   ├── middleware/      auth.js, errorHandler.js (+ upload.js where needed)
-│   ├── routes/          auth.js + this task's routes
-│   ├── sockets/         only in tasks 3 and 4
+│   ├── routes/          auth.js + this app's routes
+│   ├── sockets/         only in projects 3 and 4
 │   └── utils/           validate.js, asyncHandler.js
 └── public/
-    ├── index.html       landing page for this task
+    ├── index.html       landing page for this app
     ├── shared/          styles.css, api.js, ui.js, auth.js, boot.js, home.js
-    └── <app>/           this task's pages
+    └── <app>/           this app's pages
 ```
 
 ---
 
-Built for the **CodeAlpha Full Stack Development** internship.
+## A few things I would point out
+
+- **Money is stored as integer cents**, never a float, so no rounding error can
+  reach an order total.
+- **Checkout runs in a single transaction** — order, line items, stock
+  decrement and cart clear either all happen or none do, and stock is
+  re-checked at checkout rather than only when an item was added.
+- **Drag and drop is the native HTML5 API**, no library. A move rewrites the
+  whole column's positions in one transaction, so the board can never end up
+  with two cards claiming the same slot.
+- **Likes and follows are single toggle endpoints**, so a double click cannot
+  leave the UI and the database disagreeing.
+- **The video chat is genuinely end-to-end encrypted.** The room passphrase
+  never leaves the browser; it derives an AES-256-GCM key via PBKDF2, and the
+  server stores ciphertext it cannot read. Project 4's README shows a real
+  stored row and explains exactly what is and is not protected.
+- **Timestamps keep milliseconds**, because `datetime('now')` only resolves to
+  whole seconds — which made a post edited in its first second look unedited.

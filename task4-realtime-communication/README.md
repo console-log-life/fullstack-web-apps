@@ -1,6 +1,6 @@
-# Task 4 — Real-Time Communication App
+# Project 4 — Real-Time Communication App
 
-**CodeAlpha Full Stack Development internship · Task 4**
+One of four apps in [fullstack-web-apps](https://github.com/console-log-life/fullstack-web-apps).
 
 A meeting room in the browser: multi-user video and audio over WebRTC, screen
 sharing, a shared whiteboard, and chat plus file sharing that are **encrypted
@@ -27,7 +27,6 @@ and authentication, so it runs on its own.
 - [Database schema](#database-schema)
 - [API reference](#api-reference)
 - [How to demo](#how-to-demo)
-- [Screenshots](#screenshots)
 - [Known limitations](#known-limitations)
 
 ---
@@ -100,7 +99,7 @@ users — use a private/incognito window for the second.
 
 ## Features
 
-Mapped to the CodeAlpha Task 4 requirements:
+What it does:
 
 | Required | Status | Where |
 | --- | --- | --- |
@@ -282,7 +281,7 @@ reconnecting. Stopping the share swaps the camera track back.
 **What is NOT here: TURN.** On about 10% of networks — strict corporate or
 carrier NAT — no direct path exists and the media needs to be relayed by a TURN
 server. Running one needs a host with bandwidth, which is out of scope for this
-submission, so on such a network a call will show *"connection failed"* rather
+project, so on such a network a call will show *"connection failed"* rather
 than silently hanging. Everything else in the room (chat, files, whiteboard)
 keeps working, because it goes over Socket.io.
 
@@ -523,41 +522,6 @@ This is the most convincing 60 seconds of the demo.
    **<http://localhost:3004/api/meet/rooms/DEMO01/files>** and show that
    `original_name` is base64 ciphertext — the server does not even know what the
    file is called.
-
----
-
-## Screenshots
-
-> Replace these placeholders with your own captures before submitting.
-> Suggested: 1280×800 PNG in a `screenshots/` folder.
-
-### Lobby
-<!-- ![Lobby](screenshots/01-lobby.png) -->
-_`screenshots/01-lobby.png` — create or join a room, and the privacy notes._
-
-### Passphrase gate
-<!-- ![Passphrase gate](screenshots/02-gate.png) -->
-_`screenshots/02-gate.png` — the room asking for the passphrase before loading._
-
-### Video call
-<!-- ![Video call](screenshots/03-call.png) -->
-_`screenshots/03-call.png` — two participants connected, with the controls._
-
-### Screen sharing
-<!-- ![Screen share](screenshots/04-screenshare.png) -->
-_`screenshots/04-screenshare.png` — a screen share in progress._
-
-### Encrypted chat and files
-<!-- ![Chat and files](screenshots/05-chat-files.png) -->
-_`screenshots/05-chat-files.png` — the chat panel and a shared file._
-
-### Whiteboard
-<!-- ![Whiteboard](screenshots/06-whiteboard.png) -->
-_`screenshots/06-whiteboard.png` — the shared whiteboard mid-drawing._
-
-### Ciphertext proof
-<!-- ![Ciphertext](screenshots/07-ciphertext.png) -->
-_`screenshots/07-ciphertext.png` — the messages API returning base64 ciphertext._
 
 ---
 
