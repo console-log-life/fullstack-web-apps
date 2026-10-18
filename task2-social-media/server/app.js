@@ -1,5 +1,5 @@
 /**
- * CodeAlpha Task 2 - Social Media Platform
+ * Project 2 - Social Media Platform
  *
  * A standalone Express app. It carries its own copy of the shared foundation
  * (authentication, validation, error handling) so this folder runs on its own
@@ -110,7 +110,7 @@ app.use(errorHandler);
 
 const PORT = Number(process.env.PORT) || 3002;
 app.listen(PORT, () => {
-  console.log(`\n  CodeAlpha Task 2: Social Media Platform`);
+  console.log(`\n  Project 2: Social Media Platform (Social)`);
   console.log(`  Server   : http://localhost:${PORT}`);
   console.log(`  Database : ${DB_PATH}`);
   console.log(`  App      : http://localhost:${PORT}/social/\n`);

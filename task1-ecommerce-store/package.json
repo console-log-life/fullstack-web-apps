@@ -1,8 +1,8 @@
 {
-  "name": "codealpha-task1-ecommerce-store",
+  "name": "ecommerce-store",
   "version": "1.0.0",
   "private": true,
-  "description": "CodeAlpha Task 1: Simple E-commerce Store. Product catalogue, cart persisted per user, checkout and order history.",
+  "description": "Simple E-commerce Store (ShopLite). Product catalogue, cart persisted per user, checkout and order history.",
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",
@@ -10,9 +10,9 @@
     "seed": "node server/db/seed.js"
   },
   "keywords": [
-    "codealpha",
     "express",
     "sqlite",
+    "ecommerce",
     "shop"
   ],
   "license": "MIT",

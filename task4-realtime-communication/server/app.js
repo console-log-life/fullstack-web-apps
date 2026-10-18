@@ -1,5 +1,5 @@
 /**
- * CodeAlpha Task 4 - Real-Time Communication App
+ * Project 4 - Real-Time Communication App
  *
  * A standalone Express app. It carries its own copy of the shared foundation
  * (authentication, validation, error handling) so this folder runs on its own
@@ -123,7 +123,7 @@ require('./sockets/meet')(io);
 
 const PORT = Number(process.env.PORT) || 3004;
 server.listen(PORT, () => {
-  console.log(`\n  CodeAlpha Task 4: Real-Time Communication App`);
+  console.log(`\n  Project 4: Real-Time Communication App (Meet)`);
   console.log(`  Server   : http://localhost:${PORT}`);
   console.log(`  Database : ${DB_PATH}`);
   console.log(`  App      : http://localhost:${PORT}/meet/\n`);

@@ -1,8 +1,8 @@
 {
-  "name": "codealpha-task3-project-management",
+  "name": "project-management-tool",
   "version": "1.0.0",
   "private": true,
-  "description": "CodeAlpha Task 3: Project Management Tool. Group projects with a Kanban board that updates live, and notifications.",
+  "description": "Project Management Tool (Boards). Group projects with a Kanban board that updates live, and notifications.",
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",
@@ -10,10 +10,10 @@
     "seed": "node server/db/seed.js"
   },
   "keywords": [
-    "codealpha",
     "express",
     "sqlite",
-    "projects"
+    "socket.io",
+    "kanban"
   ],
   "license": "MIT",
   "dependencies": {

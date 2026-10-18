@@ -1,5 +1,5 @@
 /**
- * CodeAlpha Task 3 - Project Management Tool
+ * Project 3 - Project Management Tool
  *
  * A standalone Express app. It carries its own copy of the shared foundation
  * (authentication, validation, error handling) so this folder runs on its own
@@ -122,7 +122,7 @@ require('./sockets/projects')(io);
 
 const PORT = Number(process.env.PORT) || 3003;
 server.listen(PORT, () => {
-  console.log(`\n  CodeAlpha Task 3: Project Management Tool`);
+  console.log(`\n  Project 3: Project Management Tool (Boards)`);
   console.log(`  Server   : http://localhost:${PORT}`);
   console.log(`  Database : ${DB_PATH}`);
   console.log(`  App      : http://localhost:${PORT}/projects/\n`);

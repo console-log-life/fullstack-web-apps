@@ -1,5 +1,5 @@
 /**
- * CodeAlpha Task 2 - demo data seeder (`npm run seed`).
+ * Project 2 (Social) - demo data seeder (`npm run seed`).
  *
  * Loads the four demo users with profiles and bios, ten posts, plus
  * comments, likes and a follow graph so the feed and explore pages have data.
@@ -26,7 +26,7 @@ const USERS = [
 ];
 
 const BIOS = {
-  demo: 'Full stack intern at CodeAlpha. Building four apps in one submission.',
+  demo: 'Full stack developer. Building things with Node, SQLite and plain JavaScript.',
   alice: 'Frontend developer. CSS is a love language.',
   bob: 'Backend developer. I speak SQL in my sleep.',
   carol: 'Designer turned developer. Pixels and prototypes.',

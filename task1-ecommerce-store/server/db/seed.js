@@ -1,5 +1,5 @@
 /**
- * CodeAlpha Task 1 - demo data seeder (`npm run seed`).
+ * Project 1 (ShopLite) - demo data seeder (`npm run seed`).
  *
  * Loads the four demo users and a 16-product catalogue, plus a cart
  * and one past order for `demo` so every page has something to show.

@@ -1,5 +1,5 @@
 /**
- * CodeAlpha Task 3 - demo data seeder (`npm run seed`).
+ * Project 3 (Boards) - demo data seeder (`npm run seed`).
  *
  * Loads the four demo users and one project with all four of them as
  * members, ten tasks spread across the three columns, task comments and two
@@ -72,8 +72,8 @@ function run() {
     const projectInfo = db
       .prepare('INSERT INTO projects (name, description, owner_id) VALUES (?, ?, ?)')
       .run(
-        'CodeAlpha Internship Submission',
-        'Ship all four full stack tasks: store, social app, project board and meeting room.',
+        'Portfolio Launch',
+        'Ship all four portfolio apps: store, social app, project board and meeting room.',
         id.demo
       );
     const projectId = Number(projectInfo.lastInsertRowid);

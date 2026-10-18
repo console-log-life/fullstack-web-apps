@@ -156,7 +156,7 @@ const Projects = (() => {
       return;
     }
 
-    document.title = `${state.project.name} - CodeAlpha Projects`;
+    document.title = `${state.project.name} - Boards`;
 
     const boardEl = el('div', { class: 'board' });
     const membersEl = el('div', { class: 'member-chips' });

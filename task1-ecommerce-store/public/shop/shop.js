@@ -208,7 +208,7 @@ const Shop = (() => {
 
     try {
       const { product, related } = await API.get(`/api/shop/products/${id}`);
-      document.title = `${product.name} - CodeAlpha Store`;
+      document.title = `${product.name} - ShopLite`;
 
       const qtyInput = el('input', {
         type: 'number', min: '1', max: String(Math.max(1, Math.min(99, product.stock))),

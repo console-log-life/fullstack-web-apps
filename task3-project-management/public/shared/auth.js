@@ -90,8 +90,7 @@ const Shell = (() => {
         el(
           'a',
           { class: 'nav-brand', href: '/' },
-          'CodeAlpha',
-          el('span', { class: 'nav-brand-long', text: ' Projects' })
+          'Boards'
         ),
         links,
         right

@@ -1,9 +1,9 @@
 -- =====================================================================
--- CodeAlpha Task 3: Project Management Tool
+-- Project 3: Project Management Tool
 --
--- This task's own schema. It holds `users` (the shared account table every
--- CodeAlpha task needs) plus only the tables this task uses, so the folder
--- runs standalone.
+-- This app's own schema. It holds `users` (the shared account table every
+-- app here needs) plus only the tables this app uses, so the folder runs
+-- standalone.
 --
 -- Timestamps use strftime('%Y-%m-%d %H:%M:%f') rather than datetime(), which
 -- only resolves to whole seconds. Milliseconds keep ordering stable for rows

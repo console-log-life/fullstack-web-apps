@@ -1,5 +1,5 @@
 /**
- * CodeAlpha Task 1 - Simple E-commerce Store
+ * Project 1 - Simple E-commerce Store
  *
  * A standalone Express app. It carries its own copy of the shared foundation
  * (authentication, validation, error handling) so this folder runs on its own
@@ -110,7 +110,7 @@ app.use(errorHandler);
 
 const PORT = Number(process.env.PORT) || 3001;
 app.listen(PORT, () => {
-  console.log(`\n  CodeAlpha Task 1: Simple E-commerce Store`);
+  console.log(`\n  Project 1: Simple E-commerce Store (ShopLite)`);
   console.log(`  Server   : http://localhost:${PORT}`);
   console.log(`  Database : ${DB_PATH}`);
   console.log(`  App      : http://localhost:${PORT}/shop/\n`);

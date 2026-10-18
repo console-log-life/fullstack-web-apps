@@ -1,5 +1,5 @@
 /**
- * CodeAlpha Task 4 - demo data seeder (`npm run seed`).
+ * Project 4 (Meet) - demo data seeder (`npm run seed`).
  *
  * Loads the four demo users and one meeting room, code DEMO01.
  *
@@ -52,7 +52,7 @@ function run() {
 
     // --- meeting room ------------------------------------------------
     db.prepare('INSERT INTO rooms (code, name, owner_id) VALUES (?, ?, ?)')
-      .run('DEMO01', 'CodeAlpha Demo Room', id.demo);
+      .run('DEMO01', 'Demo Room', id.demo);
 
     return id;
   });
@@ -63,7 +63,7 @@ function run() {
   console.log(`  Database : ${DB_PATH}`);
   console.log(`  Users    : ${USERS.map((u) => u.username).join(', ')}`);
   console.log(`  Password : ${PASSWORD}  (same for every demo user)`);
-  console.log('  Room     : DEMO01  "CodeAlpha Demo Room" (owner: demo)');
+  console.log('  Room     : DEMO01  "Demo Room" (owner: demo)');
   console.log('  Passphrase for the demo room: codealpha');
   console.log(`  Log in as "demo" / "${PASSWORD}" to start.\n`);
 }

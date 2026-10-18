@@ -209,7 +209,7 @@ const Meet = (() => {
       return;
     }
 
-    document.title = `${room.name} (${room.code}) - CodeAlpha Meet`;
+    document.title = `${room.name} (${room.code}) - Meet`;
 
     /* ----------------------------------------------------------------
        Passphrase gate: the AES key is derived before anything is sent.

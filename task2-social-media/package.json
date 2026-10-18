@@ -1,8 +1,8 @@
 {
-  "name": "codealpha-task2-social-media",
+  "name": "social-media-platform",
   "version": "1.0.0",
   "private": true,
-  "description": "CodeAlpha Task 2: Social Media Platform. Profiles, posts with images, comments, likes and a follow graph.",
+  "description": "Social Media Platform (Social). Profiles, posts with images, comments, likes and a follow graph.",
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",
@@ -10,10 +10,10 @@
     "seed": "node server/db/seed.js"
   },
   "keywords": [
-    "codealpha",
     "express",
     "sqlite",
-    "social"
+    "social",
+    "multer"
   ],
   "license": "MIT",
   "dependencies": {

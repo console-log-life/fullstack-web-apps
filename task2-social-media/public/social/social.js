@@ -542,7 +542,7 @@ const Social = (() => {
 
     try {
       const { profile, posts } = await API.get(`/api/social/users/${encodeURIComponent(username)}`);
-      document.title = `${profile.display_name} (@${profile.username}) - CodeAlpha Social`;
+      document.title = `${profile.display_name} (@${profile.username}) - Social`;
 
       /* --- follow button --- */
       const followBtn = el('button', {
